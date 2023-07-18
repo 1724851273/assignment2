@@ -3,7 +3,7 @@
 #                  experiment name must be a valid path in the workspace.
 #
 experiment:
-  name: ""
+  name: "/Users/huang_luxin2015@hotmail.com/MLOps A2 - run"
 
 model_registry:
 # FIXME::OPTIONAL: Set the registry server URI, useful if you have a registry server different
@@ -12,13 +12,13 @@ model_registry:
 #   uri: "databricks://DATABRICKS_PROFILE_NAME"
 # FIXME::REQUIRED: Specifies the name of the Registered Model to use when registering a trained
 #                  model to the MLflow Model Registry.
-  model_name: ""
+  model_name: "v2test"
 
 INGEST_CONFIG:
   # For different options please read: https://github.com/mlflow/recipes-regression-template#ingest-step
   # FIXME::REQUIRED: Specify the format of the training and evaluation dataset. Natively supported
   #                  formats are: parquet, spark_sql, delta.
-  using: ""
+  using: csv
   # FIXME::OPTIONAL: Specify the training and evaluation data location. This is usually a DBFS
   # location ("dbfs:/...") or a SQL table ("SCHEMA.TABLE").
   # location: ""
