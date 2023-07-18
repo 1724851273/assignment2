@@ -9,7 +9,7 @@ This module defines the following routines used by the 'split' step of the regre
 from pandas import DataFrame, Series
 
 
-def create_dataset_filter(dataset: DataFrame) -> Series(bool):
+def create_dataset_filter(df: DataFrame) -> Series(bool):
     """
     Mark rows of the split datasets to be additionally filtered. This function will be called on
     the training datasets.
@@ -19,4 +19,9 @@ def create_dataset_filter(dataset: DataFrame) -> Series(bool):
     """
     # FIXME::OPTIONAL: implement post-split filtering on the dataframes, such as data cleaning.
 
-    return Series(True, index=dataset.index)
+    return (
+      (~df['region','age','weight','height','howlong','gender','eat','train','background','experience','schedule','howlong','deadlift',
+       'candj','snatch','backsq','experience','background','schedule','howlong'].isna().any(axis=1) |
+       (df['weight'] < 1500) & (df['gender']!='--') & (df['age']>=18) & ((df['height']<96)&(df['height']>48)) & 
+       ((df['deadlift']>0)&(df['deadlift']<=1105)|((df['gender']=='Female')&(df['deadlift']<=636))) & 
+       ((df['candj']>0)&(df['candj']<=395)) & ((df['snatch']>0)&(df['snatch']<=496)) & ((df['backsq']>0)&(df['backsq']<=1069))))
