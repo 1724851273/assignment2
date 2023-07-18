@@ -17,14 +17,14 @@
 
 recipe: "regression/v1"
 # FIXME::REQUIRED: Specifies the target column name for model training and evaluation.
-target_col: ""
+target_col: "total_lift"
 # FIXME::REQUIRED: Sets the primary metric to use to evaluate model performance. This primary
 #                  metric is used to select best performing models in MLflow UI as well as in
 #                  train and evaluation step.
 #                  Built-in metrics are: example_count, mean_absolute_error, mean_squared_error,
 #                  root_mean_squared_error, sum_on_label, mean_on_label, max_error,
 #                  mean_absolute_percentage_error
-primary_metric: ""
+primary_metric: "root_mean_squared_error"
 steps:
   # Specifies the dataset to use for model development
   ingest: {{INGEST_CONFIG}}
@@ -47,7 +47,7 @@ steps:
     #
     # FIXME::REQUIRED: Specifies the method to use for training. Options are "automl/flaml" for
     #                  AutoML training or "custom" for user-defined estimators.
-    using: ""
+    using: "custom"
   evaluate:
     #
     # FIXME::OPTIONAL: Sets performance thresholds that a trained model must meet in order to be
