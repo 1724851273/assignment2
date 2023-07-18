@@ -19,9 +19,5 @@ def create_dataset_filter(df: DataFrame) -> Series(bool):
     """
     # FIXME::OPTIONAL: implement post-split filtering on the dataframes, such as data cleaning.
 
-    return (
-      (~df['region','age','weight','height','howlong','gender','eat','train','background','experience','schedule','howlong','deadlift',
-       'candj','snatch','backsq','experience','background','schedule','howlong'].isna().any(axis=1) |
-       (df['weight'] < 1500) & (df['gender']!='--') & (df['age']>=18) & ((df['height']<96)&(df['height']>48)) & 
-       ((df['deadlift']>0)&(df['deadlift']<=1105)|((df['gender']=='Female')&(df['deadlift']<=636))) & 
-       ((df['candj']>0)&(df['candj']<=395)) & ((df['snatch']>0)&(df['snatch']<=496)) & ((df['backsq']>0)&(df['backsq']<=1069))))
+    return Series(True, index=df.index)
+    

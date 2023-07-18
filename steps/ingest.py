@@ -7,7 +7,7 @@ This module defines the following routines used by the 'ingest' step of the regr
 from pandas import DataFrame
 
 
-def load_file_as_dataframe(location: str) -> DataFrame:
+def load_file_as_dataframe(file_path: str, file_format: str) -> DataFrame:
     """
     Load content from the specified dataset file as a Pandas DataFrame.
 
@@ -16,14 +16,16 @@ def load_file_as_dataframe(location: str) -> DataFrame:
     called once for each file in the dataset, and MLflow Recipes automatically combines the
     resulting DataFrames together.
 
-    :param location: The path to the dataset file.
+    :param file_path: The path to the dataset file.
+    :param file_format: The file format string, such as "csv".
     :return: A Pandas DataFrame representing the content of the specified file.
     """
-    # FIXME::OPTIONAL: implement the handling of non-natively supported file_format.
 
-    raise NotImplementedError
+    if file_format == "csv":
+        import pandas
 
-def read_csv_as_dataframe(location: str) -> DataFrame:
-  import pandas
-
-  return pandas.read_csv(location, index_col=0)
+        
+        df = pandas.read_csv(file_path)
+        return df
+    else:
+        raise NotImplementedError

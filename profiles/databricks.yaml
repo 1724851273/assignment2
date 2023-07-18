@@ -15,10 +15,13 @@ model_registry:
   model_name: "v2test"
 
 INGEST_CONFIG:
+  using: csv
+  loader_method: load_file_as_dataframe
+  location: 
+    - "/dbfs/FileStore/tables/v2_ready.csv"
   # For different options please read: https://github.com/mlflow/recipes-regression-template#ingest-step
   # FIXME::REQUIRED: Specify the format of the training and evaluation dataset. Natively supported
   #                  formats are: parquet, spark_sql, delta.
-  using: csv
   # FIXME::OPTIONAL: Specify the training and evaluation data location. This is usually a DBFS
   # location ("dbfs:/...") or a SQL table ("SCHEMA.TABLE").
   # location: ""

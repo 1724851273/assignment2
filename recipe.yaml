@@ -27,10 +27,11 @@ target_col: "total_lift"
 primary_metric: "root_mean_squared_error"
 steps:
   # Specifies the dataset to use for model development
-  ingest:
-    using: "custom"
-    location: "./dbfs/FileStore/tables/v2_ready.csv"
-    loader_method: read_csv_as_dataframe
+  ingest: 
+    using: csv
+    loader_method: load_file_as_dataframe
+    location: 
+      - "/dbfs/FileStore/tables/v2_ready.csv"
   split:
     #
     # FIXME::OPTIONAL: Adjust the train/validation/test split ratios below.
