@@ -22,3 +22,8 @@ def load_file_as_dataframe(location: str) -> DataFrame:
     # FIXME::OPTIONAL: implement the handling of non-natively supported file_format.
 
     raise NotImplementedError
+
+def read_csv_as_dataframe(location: str) -> DataFrame:
+  import pandas
+
+  return pandas.read_csv(location, index_col=0)
