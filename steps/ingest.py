@@ -23,10 +23,19 @@ def load_file_as_dataframe(file_path: str, file_format: str) -> DataFrame:
 
     if file_format == "csv":
         import pandas
-
-        
         df = pandas.read_csv(file_path)
-        return df
+      
+        df['norm_dl'] = df['deadlift']/df['weight']
+        df['norm_j'] = df['candj']/df['weight']
+        df['norm_s'] = df['snatch']/df['weight']
+        df['norm_bs'] = df['backsq']/df['weight']
+        df['total_lift'] = df['norm_dl']+df['norm_j']+df['norm_s']+df['norm_bs']
+
+        col_to_drop=['age','athlete_id','name','region','team', 'affiliate','gender','eat','train','background','experience','schedule','howlong','norm_bs', 'norm_dl', 'norm_j', 'norm_s','filthy50','fgonebad','run400','run5k','pullups']
+        df_select = df.drop(columns=col_to_drop)
+        df_select=df_select.dropna()
+      
+        return df_select
     else:
         raise NotImplementedError
 # lucy taiqiangle 
